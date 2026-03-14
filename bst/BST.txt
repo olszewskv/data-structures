@@ -1,0 +1,46 @@
+TreeNode(T):
+- TreeNode(T)* left
+- TreeNode(T)* right
+- TreeNode(T)* parent
+
+Tree(T):
+- TreeNode(T)* root
+- int size
+
+   klucz     <     klucz rodzica   <    klucz_p
+  (dziecko)                            (dziecko)
+
+    70, 53, 12, 39, 80, 14, 2, 75
+
+                70
+             /     \
+            53      80
+           /          \
+          12           75
+         /  \
+        2    39
+              \
+               14
+
+
+Usuwanie w BST - 3 przypadki:
+Przypadek 1: Węzeł bez dzieci (liść) - po prostu usuwamy
+    [5]
+   /   \
+ [3]   [7]   ← usuwamy [7]
+
+Przypadek 2: Węzeł z jednym dzieckiem - dziecko przejmuje miejsce rodzica
+    [5]
+   /   \
+ [3]   [7]   ← usuwamy [7]
+      /
+    [6]       ← [6] przejmuje miejsce [7]
+
+Przypadek 3: Węzeł z dwoma dziećmi - szukamy następnika
+    [5]
+   /   \
+ [3]   [7]   ← usuwamy [5]
+      /   \
+    [6]   [9]
+- Szukamy najmniejszego w prawym poddrzewie (następnika) → [6]
+- [6] przejmuje miejsce [5]

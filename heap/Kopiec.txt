@@ -1,0 +1,71 @@
+---Kopiec Binarny Pełny---
+
+- kopiec zorientowany na maximum :
+    - w dowolnynm punkcie kopca -> klucz rodzica przewyższa klucze dzieci (remisy dopuszczone),
+      [MAX] / MIN
+        |
+      klucz rodzica >= klucze dzieci
+
+
+               0: 50
+            /         \
+       1: 35           2: 43
+       /     \        /      \
+   3: 18     4: 9   5: 38    6: 40
+ /    \
+7: 5  8:15
+
+0: 50, 1: 35, 2: 43, 3: 18, 4: 9, 5: 38, 6: 40, 7: 5, 8: 15
+
+
+       (i-1)/2
+           |
+           i
+        /     \
+     Z(i+1)  Z(i+2)
+
+BH.add(48) {
+(1)  (wizualizacja)
+    0: 50, 1: 35, 2: 43, 3: 18, 4: 9, 5: 38, 6: 40, 7: 5, 8: 15, 9: 48
+
+                   0: 50
+                /         \
+           1: 35           2: 43
+           /     \        /      \
+       3: 18     4: 9   5: 38    6: 40
+     /    \       /
+    7: 5  8:15   9:48
+
+    heap_up(i) {
+    ...
+        heap_up(9)
+            |
+           \ /
+        heap_up(4)
+            |
+           \ /
+        heap_up(0)
+    }
+
+    NA KONCU :
+                  0: 50
+                /         \
+           1: 48          2: 43
+           /     \        /      \
+       3: 18     4: 35   5: 38    6: 40
+     /    \        /
+    7: 5  8:15    9:9
+
+    0: 50, 1: 48, 2: 43, 3: 18, 4: 35, 5: 38, 6: 40, 7: 5, 8: 15, 9: 9
+}
+
+
+BH.poll() -> MAX {
+            heap_down(0)
+                |
+               \ /
+            heap_down(1)
+                |
+               \ /
+            heap_down(4)
+}
